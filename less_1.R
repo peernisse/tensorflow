@@ -57,6 +57,24 @@ myfirstvariabletensor <- tf$Variable(tf$zeros(shape(5,1)))
 
 
 
+#`Visualizing tensorflow models with tensorboard
+#`tensorboard makes a visual map of data flow in the model
+#`is browser based
+#'Example with adults and children at picnic
+library(tensorflow)
+session<-tf$Session()
+
+a<-tf$constant(5, name="NumAdults")
+b<-tf$constant(6, name="NumChildren")
+c<-tf$add(a,b)
+print(session$run(c))
+
+#'Open in tensorboard
+#Write to local machine
+writemygraph<-tf$summary$FileWriter('./graphs',session$graph)
+tensorflow::tf_config()
+tensorboard(log_dir='./graphs')
+
 
 
 
