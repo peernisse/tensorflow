@@ -43,6 +43,10 @@ vignettes/*.pdf
 
 /graphs
 
+#Data
+/data
+/data/
+
 
 
 
