@@ -1,8 +1,10 @@
 #Installing
-install.packages("tensorflow")
 library(tensorflow)
-install_tensorflow()
-Y
+
+#reticulate::conda_remove("r-reticulate")
+
+#Install latest version
+tensorflow::install_tensorflow()
 
 #` to work with the tutorial need tf <v2
 tensorflow::install_tensorflow(version = "1.13.1")
@@ -11,6 +13,7 @@ tensorflow::install_tensorflow(version = "1.13.1")
 
 #Quiz 2
 # Create your session
+use_condaenv("r-reticulate")
 sess <- tf$Session()
 
 # Define a constant (you'll learn this next!)
@@ -52,10 +55,12 @@ SinglePlaceholder<-tf$placeholder(tf$float32)
 myfirstconstanttensor <- tf$constant(152)
 mysecondconstanttensor <- tf$constant('I am a tensor master!')
 
+print(sess$run(mysecondconstanttensor))
+
 # Create a matrix of zeros
 myfirstvariabletensor <- tf$Variable(tf$zeros(shape(5,1)))
 
-
+sess$close()
 
 #`Visualizing tensorflow models with tensorboard
 #`tensorboard makes a visual map of data flow in the model
@@ -69,22 +74,40 @@ b<-tf$constant(6, name="NumChildren")
 c<-tf$add(a,b)
 print(session$run(c))
 
-#'Open in tensorboard
+#'Open in tensorboard--this does not currently work
 #Write to local machine
+library(keras)
+use_condaenv("r-reticulate")
+
 writemygraph<-tf$summary$FileWriter('./graphs',session$graph)
+
+writemygraph
 tensorflow::tf_config()
+
+callbacks = callback_tensorboard('./graphs')
+
 tensorboard(log_dir='./graphs')
 
+tensorflow::tf_config()
+
+tensorboard()
+
+#Practice
 
 
 
 
 
+#STUFF-----------------------------------
+
+
+old_path <- Sys.getenv("PATH")
+
+Sys.setenv(PATH = paste(old_path, "C:\\Users\\peern\\AppData\\Local\\R-MINI~1\\Scripts", sep = ";"))
 
 
 
-
-
+str(old_path)
 
 
 

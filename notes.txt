@@ -1,0 +1,41 @@
+
+(base) C:\Users\peern>conda remove tensorflow
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are missing from the target environment:
+  - tensorflow
+
+
+
+(base) C:\Users\peern>conda remove tensorflow-cpu
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are missing from the target environment:
+  - tensorflow-cpu
+
+
+
+(base) C:\Users\peern>conda activate tensorflow
+Could not find conda environment: tensorflow
+You can list all discoverable environments with `conda info --envs`.
+
+
+(base) C:\Users\peern>conda info --envs
+# conda environments:
+#
+                         C:\Users\peern\AppData\Local\R-MINI~1
+                         C:\Users\peern\AppData\Local\R-MINI~1\envs\r-reticulate
+                         C:\Users\peern\AppData\Local\r-miniconda\envs\r-reticulate
+base                  *  C:\Users\peern\anaconda3
+tensorflow-cpu           C:\Users\peern\anaconda3\envs\tensorflow-cpu
+
+
+(base) C:\Users\peern>conda activate tensorflow-cpu
+
+(tensorflow-cpu) C:\Users\peern>tensorboard --logdir 'logs'
+'tensorboard' is not recognized as an internal or external command,
+operable program or batch file.
+
+(tensorflow-cpu) C:\Users\peern>
