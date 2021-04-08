@@ -71,7 +71,7 @@ text_vectorization %>%
 
 get_vocabulary(text_vectorization)
 
-#ou can see how the text vectorization layer transforms it’s inputs:
+#ou can see how the text vectorization layer transforms its inputs:
 
 text_vectorization(matrix(df$text[1], ncol = 1))
 
@@ -134,20 +134,25 @@ testing$MODELED <- model %>% predict(testing$text) %>% round(.,0)
 
 testing$BINARY<-as.numeric(testing$tag == "pos")
 
-test_predictions[ , 1]
 
 
 #Check how the predicted values align with the given train values
-xxx<-test_df %>% mutate(PRED = test_predictions)
-
-mdl<-lm(xxx$PRED~xxx$label)
-
-plot(xxx$PRED~xxx$label)
-abline(mdl)
-
-summary(mdl)
 
 
+mdl<-lm(testing$MODELED~testing$BINARY)
+
+boxplot(testing$MODELED~testing$BINARY)
+
+
+summary(testing$MODELED)
+summary(testing$BINARY)
+
+a<-as.vector(testing$MODELED)
+b<-as.vector(testing$BINARY)
+
+t.test(a,b)
+ml<-lm(a~b)
+anova(ml)
 
 
 
